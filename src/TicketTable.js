@@ -1,4 +1,5 @@
 import React from 'react'
+import TicketRow from './Ticketrow'
 
 const TicketTable = ( props ) => {
     console.log(props)
@@ -14,22 +15,12 @@ const TicketTable = ( props ) => {
             <th> Priority </th>
             <th> Message </th>
             <th> Status </th>
+            <th> Remove </th>
           </tr>
           </thead>
           <tbody>
               {
-                props.tickets.map( ticket => {
-                  return (
-                    <tr key={ticket.ticket_code}>
-                    <td> { ticket.ticket_code }</td>
-                    <td> { ticket.name }</td>
-                    <td> { ticket.department }</td>
-                    <td> { ticket.priority } </td>
-                    <td> { ticket.message } </td>
-                    <td> { ticket.status } </td>
-                    </tr>
-                  )
-                })
+                 <TicketRow tickets={props.tickets} handleChecked= {props.handleChecked} handleRemove = {props.handleRemove}/>
               }
             </tbody></table>
         </div>
