@@ -1,14 +1,15 @@
 import React from 'react' 
 import { connect } from 'react-redux'
 
-import { removeTicket } from '../../actions/tickets'
+import { StartRemoveTicket } from '../../actions/tickets'
 
 const TicketShow = (props) => {
-    const { id, name, message, priority, department } = props.ticket 
+    const {  name, message, priority, department } = props.ticket 
 
     const handleRemove = () => {
         const confirm = window.confirm("Are you sure? ") 
         if(confirm) {
+            // props.dispatch(StartRemoveTicket(id))
            props.dispatch(removeTicket(id))
            props.history.push('/tickets')
         }

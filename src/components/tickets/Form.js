@@ -1,5 +1,5 @@
 import React from 'react' 
-import uuid from 'uuid'
+// import uuid from 'uuid'
 import Select from 'react-select'
 
 class TicketForm extends React.Component {
@@ -38,23 +38,22 @@ class TicketForm extends React.Component {
     }
 
     handleDeptChange = (option) => {
+        console.log("option dept",option)
         this.setState(() => ({ selectedDeptOption: option}))
-        console.log(option)
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
         const formData = {
-            id: uuid(), 
+            // id: uuid(), 
             name: this.state.name,
-            department: this.state.department,
+            department: this.state.selectedDeptOption.value,
             priority: this.state.selectedPriorityOption.value,
             message: this.state.message
         }
+        console.log(formData,"dept")
         this.props.handleSubmit(formData)
     }
-
-    
 
     render() {
         console.log(this.state)

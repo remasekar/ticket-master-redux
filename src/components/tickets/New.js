@@ -3,16 +3,17 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import TicketForm from './Form'
 
-import { addTicket } from '../../actions/tickets'
+import { StartAddticket } from '../../actions/tickets'
 
 const TicketNew = (props) => {
 
     const handleSubmit = (formData) => {
         console.log('new', formData) 
-        props.dispatch(addTicket(formData))
+        props.dispatch(StartAddticket(formData))
+        // props.dispatch(addTicket(formData))
         props.history.push('/tickets')
     }
-
+    console.log(props.previousTicket,"tkt")
     return (
         <div className="row">
             <div className="col-md-8">
@@ -25,7 +26,7 @@ const TicketNew = (props) => {
                     <div className="card-body">
                         <h5 className="card-title">Last Ticket</h5>
                         {props.previousTicket ? (<React.Fragment><p className="card-text"> { props.previousTicket.name } </p>
-                        <Link to={`/tickets/${props.previousTicket.id}`}>Show</Link></React.Fragment>): (<React.Fragment>
+                        <Link to ="/tickets/:id">Show</Link></React.Fragment>): (<React.Fragment>
                             this is first tiket
                         </React.Fragment>)}
                     </div>
